@@ -21,6 +21,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/airports',[App\Http\Controllers\AirportsViewController::class, 'index'])->name('airports');
+Route::get('/planes',[App\Http\Controllers\PlanesViewController::class, 'index'])->name('planes');
+Route::get('/gates',[App\Http\Controllers\GatesViewController::class, 'index'])->name('gates');
+Route::get('/flights',[App\Http\Controllers\FlightsViewController::class, 'index'])->name('flights');
