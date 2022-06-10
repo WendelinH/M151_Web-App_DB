@@ -41,7 +41,7 @@
                             <a href="{{ route('airports.edit', ['airport' => $airport->id]); }}" class="btn btn-warning" role="button">Edit</a>
                             <form 
                                 method="post" 
-                                action="{{ action([\App\Http\Controllers\GatesViewController::class, 'destroy'], $airport) }}" 
+                                action="{{ action([\App\Http\Controllers\AirportsViewController::class, 'destroy'], $airport) }}" 
                                 class="d-inline-block">
                                 @csrf
                                 @method('DELETE')
