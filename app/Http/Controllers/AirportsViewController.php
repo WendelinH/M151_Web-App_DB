@@ -10,4 +10,9 @@ class AirportsViewController extends Controller
         $airports = Airport::all();
         return view('airports',['airports'=>$airports]);
     }
+
+    public function show(Airport $airport){
+        dd($airport);
+        // return view('airports',['airport'=>$airport]);
+    }
 }
