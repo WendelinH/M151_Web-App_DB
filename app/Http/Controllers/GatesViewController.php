@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
 use App\Models\Gate;
 
 class GatesViewController extends Controller
@@ -26,10 +27,10 @@ class GatesViewController extends Controller
         return view('gate.create');
     }
 
-    public function destroy(Gate $gate)
+    public function destroy(Gate $gate): RedirectResponse
     {
         $gate->delete();
-        return view('gate.index');
+        return back();
     }
 
     public function update(Gate $gate)

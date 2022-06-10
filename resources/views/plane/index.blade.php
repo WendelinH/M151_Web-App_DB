@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
 
             <div class="navbar navbar-inverse">
                 <div class="container-fluid">
@@ -54,9 +54,17 @@
                         </td>
                         <td>{{ $plane->created_at }}</td>
                         <td>{{ $plane->updated_at }}</td>
-                        <td>
+                        <td class="text-end">
                             <a href="{{ route('planes.show', ['plane' => $plane->id]); }}" class="btn btn-info" role="button">Show</a>
                             <a href="{{ route('planes.edit', ['plane' => $plane->id]); }}" class="btn btn-warning" role="button">Edit</a>
+                            <form 
+                                method="post" 
+                                action="{{ action([\App\Http\Controllers\PlanesViewController::class, 'destroy'], $plane) }}" 
+                                class="d-inline-block">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
                         </td>
                     </tr>
                     @endforeach

@@ -2,6 +2,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
+use Illuminate\Http\RedirectResponse;
 use App\Models\Airport;
 
 class AirportsViewController extends Controller
@@ -26,10 +28,10 @@ class AirportsViewController extends Controller
         return view('airport.create');
     }
 
-    public function destroy(Airport $airport)
+    public function destroy(Airport $airport): RedirectResponse
     {
         $airport->delete();
-        return view('airport.index');
+        return back();
     }
 
     public function update(Airport $airport)

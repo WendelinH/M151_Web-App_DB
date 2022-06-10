@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
 
             <div class="navbar navbar-inverse">
                 <div class="container-fluid">
@@ -63,6 +63,14 @@
                         <td>
                             <a href="{{ route('gates.show', ['gate' => $gate->id]); }}" class="btn btn-info" role="button">Show</a>
                             <a href="{{ route('gates.edit', ['gate' => $gate->id]); }}" class="btn btn-warning" role="button">Edit</a>
+                            <form 
+                                method="post" 
+                                action="{{ action([\App\Http\Controllers\GatesViewController::class, 'destroy'], $gate) }}" 
+                                class="d-inline-block">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
                         </td>
                     </tr>
                     @endforeach

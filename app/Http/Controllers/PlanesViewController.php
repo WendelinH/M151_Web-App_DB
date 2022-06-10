@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Plane;
+use Illuminate\Http\RedirectResponse;
 
 class PlanesViewController extends Controller
 {
@@ -26,10 +27,10 @@ class PlanesViewController extends Controller
         return view('plane.create');
     }
 
-    public function destroy(Plane $plane)
+    public function destroy(Plane $plane): RedirectResponse
     {
         $plane->delete();
-        return view('plane.index');
+        return back();
     }
 
     public function update(Plane $plane)
