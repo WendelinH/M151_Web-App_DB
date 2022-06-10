@@ -5,7 +5,9 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
 
-            <h1>Airports</h1>
+            <h1>Airport - {{ $airport->name }}</h1>
+
+            <h2>Show</h2>
 
             @auth
             <table class='table table-bordered'>
@@ -18,14 +20,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($airports as $airport)
                     <tr>
                         <td>{{ $airport->id }}</td>
                         <td>{{ $airport->name }}</td>
                         <td>{{ $airport->created_at }}</td>
                         <td>{{ $airport->updated_at }}</td>
                     </tr>
-                    @endforeach
                 </tbody>
             </table>
             @endauth

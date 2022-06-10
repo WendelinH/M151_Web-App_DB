@@ -8,11 +8,32 @@ class AirportsViewController extends Controller
 {
     public function index(){
         $airports = Airport::all();
-        return view('airports',['airports'=>$airports]);
+        return view('airport.index',['airports'=>$airports]);
     }
 
-    public function show(Airport $airport){
+    public function show(Airport $airport)
+    {
+        return view('airport.show',['airport'=>$airport]);
+    }
+
+    public function edit(Airport $airport)
+    {
+        return view('airport.edit',['airport'=>$airport]);
+    }
+
+    public function create(Airport $airport)
+    {
+        return view('airport.create');
+    }
+
+    public function destroy(Airport $airport)
+    {
+        $airport->delete();
+        return view('airport.index');
+    }
+
+    public function update(Airport $airport)
+    {
         dd($airport);
-        // return view('airports',['airport'=>$airport]);
     }
 }

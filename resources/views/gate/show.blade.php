@@ -5,7 +5,9 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
 
-            <h1>Gates</h1>
+            <h1>Gate - {{ $gate->number }}</h1>
+
+            <h2>Show</h2>
 
             @auth
             <table class='table table-bordered'>
@@ -21,17 +23,33 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($gates as $gate)
                     <tr>
                         <td>{{ $gate->id }}</td>
-                        <td>{{ $gate->size_small }}</td>
-                        <td>{{ $gate->state_free }}</td>
-                        <td>{{ $gate->international }}</td>
+                        <td>
+                            @if ($gate->size_small == true)
+                                <span>&#x2705;</span>
+                            @else
+                                <span>&#x2B55;</span>
+                            @endif
+                        </td>
+                        <td>
+                            @if ($gate->state_free == true)
+                                <span>&#x2705;</span>
+                            @else
+                                <span>&#x2B55;</span>
+                            @endif
+                        </td>
+                        <td>
+                            @if ($gate->international == true)
+                                <span>&#x2705;</span>
+                            @else
+                                <span>&#x2B55;</span>
+                            @endif
+                        </td>
                         <td>{{ $gate->number }}</td>
                         <td>{{ $gate->created_at }}</td>
                         <td>{{ $gate->updated_at }}</td>
                     </tr>
-                    @endforeach
                 </tbody>
             </table>
             @endauth
