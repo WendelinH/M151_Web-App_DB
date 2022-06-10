@@ -12,7 +12,7 @@
                     </div>
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <a href="{{ route('flights.create'); }}" class="btn btn-primary" role="button">Create</a>
+                            <a href="{{ route('flights.create'); }}" class="btn btn-primary" role="button"><i class="las la-plus"></i>Create</a>
                         </li>
                     </ul>
                 </div>
@@ -40,15 +40,15 @@
                         <td>{{ $flight->number }}</td>
                         <td>{{ $flight->created_at }}</td>
                         <td>{{ $flight->updated_at }}</td><td>
-                            <a href="{{ route('flights.show', ['flight' => $flight->id]); }}" class="btn btn-info" role="button">Show</a>
-                            <a href="{{ route('flights.edit', ['flight' => $flight->id]); }}" class="btn btn-warning" role="button">Edit</a>
+                            <a href="{{ route('flights.show', ['flight' => $flight->id]); }}" class="btn btn-info" role="button"><i class="las la-eye"></i>Show</a>
+                            <a href="{{ route('flights.edit', ['flight' => $flight->id]); }}" class="btn btn-warning" role="button"><i class="las la-edit"></i>Edit</a>
                             <form 
                                 method="post" 
                                 action="{{ action([\App\Http\Controllers\FlightsViewController::class, 'destroy'], $flight) }}" 
                                 class="d-inline-block">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Delete</button>
+                                <button type="submit" class="btn btn-danger"><i class="las la-trash"></i>Delete</button>
                             </form>
                         </td>
                     </tr>

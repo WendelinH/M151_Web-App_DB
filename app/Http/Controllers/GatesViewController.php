@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Log;
 use App\Models\Gate;
 
 class GatesViewController extends Controller
@@ -25,6 +26,25 @@ class GatesViewController extends Controller
     public function create(Gate $gate)
     {
         return view('gate.create');
+    }
+
+    public function store(Request $request): RedirectResponse
+    {
+        try {
+            Gate::query()->create([
+                'size_small' => $request->input('size_small') === 'on',
+                'state_free' => $request->input('state_free') === 'on',
+                'international' => $request->input('international') === 'on',
+                'number' => $request->input('number'),
+            ]);
+        } catch (\Exception $exeption) {
+            Log::error('Failed '+ $exeption, ['exeption' => $exeption->getMessage()]);
+
+            // TODO show Error in View
+
+            return back();
+        }
+        return redirect(route('gates.index'));
     }
 
     public function destroy(Gate $gate): RedirectResponse

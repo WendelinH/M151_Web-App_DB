@@ -16,15 +16,17 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ config('app.name', 'Laravel') }} <i class="lab la-mandalorian"></i>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -33,12 +35,55 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
+                        @auth
 
+                        <li class="nav-item dropdown active">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="las la-rocket"></i>{{ __('Airports') }}
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="{{ route('airports.index') }}"><i class="las la-rocket"></i>{{ __('Airports') }}</a></li>
+                                <li><a class="dropdown-item" href="{{ route('airports.create') }}"><i class="las la-plus"></i>{{ __('Create') }}</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown active">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="las la-plane-arrival"></i>{{ __('Gates') }}
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="{{ route('gates.index') }}"><i class="las la-plane-arrival"></i>{{ __('Gates') }}</a></li>
+                                <li><a class="dropdown-item" href="{{ route('gates.create') }}"><i class="las la-plus"></i>{{ __('Create') }}</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown active">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="las la-plane-departure"></i>{{ __('Flights') }}
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="{{ route('flights.index') }}"><i class="las la-plane-departure"></i>{{ __('Flights') }}</a></li>
+                                <li><a class="dropdown-item" href="{{ route('flights.create') }}"><i class="las la-plus"></i>{{ __('Create') }}</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown active">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="las la-plane"></i>{{ __('Planes') }}
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="{{ route('planes.index') }}"><i class="las la-plane"></i>{{ __('Planes') }}</a></li>
+                                <li><a class="dropdown-item" href="{{ route('planes.create') }}"><i class="las la-plus"></i>{{ __('Create') }}</a></li>
+                            </ul>
+                        </li>
+                        @endauth
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
+                        <li class="nav-item">
+                                    <a class="nav-link" target="_blank" href="https://icons8.com/line-awesome">{{ __('icons8.com line-awesome') }}</a>
+                        </li>
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
@@ -52,20 +97,6 @@
                                 </li>
                             @endif
                         @else
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('airports.index') }}">{{ __('Airports') }}</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('gates.index') }}">{{ __('Gates') }}</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('flights.index') }}">{{ __('Flights') }}</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('planes.index') }}">{{ __('Planes') }}</a>
-                            </li>
-                            
 
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

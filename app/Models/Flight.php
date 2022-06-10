@@ -16,4 +16,10 @@ use Illuminate\Database\Eloquent\Model;
 class Flight extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'start_time',
+        'landing_time',
+        'number',
+    ];
 }

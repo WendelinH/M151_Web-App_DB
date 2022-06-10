@@ -10,21 +10,25 @@
             <h2>Create</h2>
 
             @auth
-            <form>
+            <form
+                method="post" 
+                action="{{ action([\App\Http\Controllers\GatesViewController::class, 'store']) }}">
+                @csrf
+                @method('POST')
                 <div class="form-group">
                     <label for="number">Number</label>
-                    <input type="number" class="form-control" id="number">
+                    <input type="number" class="form-control" id="number" name='number'>
                 </div>
                 <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="size_small">
+                    <input type="checkbox" class="form-check-input" id="size_small" name='size_small'>
                     <label class="form-check-label" for="size_small">Size Small</label>
                 </div>
                 <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="state_free">
+                    <input type="checkbox" class="form-check-input" id="state_free" name='state_free'>
                     <label class="form-check-label" for="state_free">State Free</label>
                 </div>
                 <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="international">
+                    <input type="checkbox" class="form-check-input" id="international" name='international'>
                     <label class="form-check-label" for="international">International</label>
                 </div>
                 <button type="submit" class="btn btn-primary">Create</button>

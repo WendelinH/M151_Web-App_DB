@@ -12,7 +12,7 @@
                     </div>
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <a href="{{ route('gates.create'); }}" class="btn btn-primary" role="button">Create</a>
+                            <a href="{{ route('gates.create'); }}" class="btn btn-primary" role="button"><i class="las la-plus"></i>Create</a>
                         </li>
                     </ul>
                 </div>
@@ -61,15 +61,15 @@
                         <td>{{ $gate->created_at }}</td>
                         <td>{{ $gate->updated_at }}</td>
                         <td>
-                            <a href="{{ route('gates.show', ['gate' => $gate->id]); }}" class="btn btn-info" role="button">Show</a>
-                            <a href="{{ route('gates.edit', ['gate' => $gate->id]); }}" class="btn btn-warning" role="button">Edit</a>
+                            <a href="{{ route('gates.show', ['gate' => $gate->id]); }}" class="btn btn-info" role="button"><i class="las la-eye"></i>Show</a>
+                            <a href="{{ route('gates.edit', ['gate' => $gate->id]); }}" class="btn btn-warning" role="button"><i class="las la-edit"></i>Edit</a>
                             <form 
                                 method="post" 
                                 action="{{ action([\App\Http\Controllers\GatesViewController::class, 'destroy'], $gate) }}" 
                                 class="d-inline-block">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Delete</button>
+                                <button type="submit" class="btn btn-danger"><i class="las la-trash"></i>Delete</button>
                             </form>
                         </td>
                     </tr>

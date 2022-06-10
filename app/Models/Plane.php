@@ -17,4 +17,11 @@ use Illuminate\Database\Eloquent\Model;
 class Plane extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'pasengers',
+        'refuel_time',
+        'jet',
+        'propeller'
+    ];
 }

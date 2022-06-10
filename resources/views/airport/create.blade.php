@@ -10,10 +10,14 @@
             <h2>Create</h2>
 
             @auth
-            <form>
+            <form 
+                method="post" 
+                action="{{ action([\App\Http\Controllers\AirportsViewController::class, 'store']) }}">
+                @csrf
+                @method('POST')
                 <div class="form-group">
                     <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name" aria-describedby="nameHelp" placeholder="Enter Name">
+                    <input type="text" class="form-control" id="name" name='name' aria-describedby="nameHelp" placeholder="Enter Name">
                     <small id="nameHelp" class="form-text text-muted">Name of the Airport.</small>
                 </div>
                 <button type="submit" class="btn btn-primary">Create</button>
