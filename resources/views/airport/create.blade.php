@@ -10,7 +10,14 @@
             <h2>Create</h2>
 
             @auth
-            <p>"Create Form"</p>
+            <form>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" aria-describedby="nameHelp" placeholder="Enter Name">
+                    <small id="nameHelp" class="form-text text-muted">Name of the Airport.</small>
+                </div>
+                <button type="submit" class="btn btn-primary">Create</button>
+            </form>
             @endauth
             @guest
                 <p>Bitte Anmelden</p>
